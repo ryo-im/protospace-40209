@@ -10,9 +10,9 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    prototype = Prototype.create(prototype_params)
-    if prototype.save
-       redirect_to root_path
+    @prototype = Prototype.create(prototype_params)
+    if @prototype.save
+      redirect_to root_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,8 +32,8 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    if prototype.update(prototype_params)
+    @prototype = Prototype.find(params[:id])
+    if @prototype.update(prototype_params)
       redirect_to root_path
     else
       render :edit, status: :unprocessable_entity
